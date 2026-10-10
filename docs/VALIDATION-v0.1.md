@@ -171,3 +171,27 @@ Branch: release/technical-v0.1-closeout
 
 Final merged-commit CI, final artifact validation and public-release
 reproduction remain pending.
+
+## Fresh sanitized repository — 10 October 2026
+
+Checkpoint: 4406b7f113ff2f95d6269cdd60b49480c0faa1e2
+
+- A fresh local environment installed this checkout.
+- All 85 tests passed on macOS with Python 3.13.16, without skips.
+- Ruff passed; pip check reported no broken requirements.
+- Both macOS Python 3.11 and 3.13 CI jobs passed:
+  https://github.com/gfonseca-labs/witness/actions/runs/38084814507
+- The known-personal-identifier audit passed for all 46 staged source files.
+  Approved account links were excluded from that audit.
+- Git history excludes the old machine-identified development commits.
+- The owner accepts personal-name attribution and account identifiers;
+  machine identifiers and personal local paths remain prohibited.
+- Fresh follow-up issues are #1, #2 and #3.
+
+Gitleaks reported no leaks across 2 scanned commits at this checkpoint.
+Git history contains 3 commits including the merge. The scan exit-code
+line was not captured, so this record does not assert its numeric value.
+
+Final closeout CI, final history/privacy checks, rebuilt distributions
+and public-release reproduction remain pending.
+Earlier distributions must not be published.

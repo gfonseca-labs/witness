@@ -50,9 +50,12 @@ Article and social publication must retain their separate deferred status.
 - Evaluate additional path/input hardening and resource limits.
 - Validate Linux and Windows support.
 
-Earlier issues belong to the private development archive.
-These issues must be recreated in the fresh repository and their actual
-links recorded before technical release completion.
+The fresh repository follow-up issues are:
+- #1: https://github.com/gfonseca-labs/witness/issues/1
+- #2: https://github.com/gfonseca-labs/witness/issues/2
+- #3: https://github.com/gfonseca-labs/witness/issues/3
+
+Their creation does not resolve the disclosed limitations.
 
 ## D-031 — Public repository privacy — Accepted
 
@@ -66,3 +69,16 @@ are private-development evidence, not validation of this fresh history.
 
 Rebuild and revalidate distributions from the sanitized release commit.
 Do not publish the earlier distributions.
+
+## D-032 — Privacy scope clarification — Accepted
+
+The owner accepts personal-name author attribution and GitHub account
+identifiers. Machine identifiers, local usernames, hostnames and personal
+filesystem paths must be excluded from published files and commit metadata.
+
+This supersedes D-031's prohibition on personal-name author attribution.
+Existing Blackwood project attribution remains valid.
+
+The original machine-identified development history remains private.
+Fresh repository history consists of sanitized source, the accepted
+GitHub starter commit and their merge.
