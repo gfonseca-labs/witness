@@ -1,84 +1,35 @@
-# Witness by Blackwood v0.1.0 — owner release decision
+# Witness by Blackwood — owner release decision
 
 Owner: Blackwood
 Decision date: 10 October 2026
-Reviewed baseline: private development archive.
-Fresh sanitized release commit: pending.
 
-## D-030 — Technical GitHub release route — Accepted
+## D-030 — Accepted route and limitations
 
-Witness by Blackwood v0.1.0 will ship as a technical GitHub release.
-Article and social publication are deferred post-release work.
-They remain incomplete and must not be described as published.
+D-030 accepts a technical GitHub-only v0.1 release with the disclosed limitations. Article and social publication are deferred and incomplete. Fresh issues #1, #2 and #3 preserve deferred technical work. D-032 permits personal-name attribution and account identifiers while excluding personal machine identifiers and local paths. Final release approval remains pending.
 
-This supersedes their status as prerequisites for the technical release.
-Historical planning requirements remain preserved.
+- Hard-link support required; power-loss durability not guaranteed.
+- Concurrent-change detection is not an atomic snapshot.
+- Parent-directory symlink protection incomplete; no general input resource quota.
+- Linux/Windows support, independent audit, separate-user trial and demand not established.
 
-No new features will be added before v0.1.0.
+No new features before release.
 
-## Residual limitations — Accepted
+## D-031/D-032 — Accepted privacy scope
 
-The owner explicitly accepts the documented v0.1 limitations:
+Original machine-identified development history remains private. Fresh sanitized
+history is used. Personal-name attribution and GitHub account identifiers are
+accepted. Machine identifiers, local usernames, hostnames and personal local
+paths must be excluded from published files and commit metadata. D-032
+supersedes the earlier personal-name prohibition.
 
-- Output publication requires hard-link support.
-- Power-loss durability is not guaranteed.
-- Concurrent-change detection does not provide an atomic filesystem snapshot.
-- Parent-directory symlink protection is incomplete.
-- Input reads have no general resource quota.
-- Linux and Windows support is not established.
-- No independent security audit is established.
-- No separate-user usability trial or demonstrated demand is established.
+## Follow-ups
 
-These are disclosed limitations, not claims that the risks have been
-eliminated. Deferred technical work will be recorded in GitHub issues.
+- [#1 — durability/portability](https://github.com/gfonseca-labs/witness/issues/1)
+- [#2 — path/input hardening and limits](https://github.com/gfonseca-labs/witness/issues/2)
+- [#3 — Linux/Windows validation](https://github.com/gfonseca-labs/witness/issues/3)
 
-## Final release approval — Pending
+## Final approval — Pending
 
-Scope and limitations approval does not establish release completion.
-
-Final approval remains conditional on final artifact checks, passing CI,
-final secret scanning, public security-reporting verification and
-successful reproduction from the public release.
-
-Record the final commit, tag, artifact hashes, CI URL, release URL and
-reproduction results before marking the technical release SHIPPED.
-Article and social publication must retain their separate deferred status.
-
-## Deferred technical follow-up work
-
-- Improve output publication durability and hard-link portability.
-- Evaluate additional path/input hardening and resource limits.
-- Validate Linux and Windows support.
-
-The fresh repository follow-up issues are:
-- #1: https://github.com/gfonseca-labs/witness/issues/1
-- #2: https://github.com/gfonseca-labs/witness/issues/2
-- #3: https://github.com/gfonseca-labs/witness/issues/3
-
-Their creation does not resolve the disclosed limitations.
-
-## D-031 — Public repository privacy — Accepted
-
-Public project attribution uses Blackwood.
-Personal names, personal email addresses and local user paths must not
-appear in repository contents or Git author/committer metadata.
-
-The original development repository remains private. The sanitized
-repository starts with fresh history. Historical test and scan results
-are private-development evidence, not validation of this fresh history.
-
-Rebuild and revalidate distributions from the sanitized release commit.
-Do not publish the earlier distributions.
-
-## D-032 — Privacy scope clarification — Accepted
-
-The owner accepts personal-name author attribution and GitHub account
-identifiers. Machine identifiers, local usernames, hostnames and personal
-filesystem paths must be excluded from published files and commit metadata.
-
-This supersedes D-031's prohibition on personal-name author attribution.
-Existing Blackwood project attribution remains valid.
-
-The original machine-identified development history remains private.
-Fresh repository history consists of sanitized source, the accepted
-GitHub starter commit and their merge.
+Scope approval is not release completion. Record final commit, CI URL, tag,
+asset hashes, release URL, public reproduction and owner sign-off before
+technical SHIPPED. Article/social remain deferred and incomplete.

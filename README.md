@@ -1,10 +1,5 @@
 # Witness by Blackwood
 
-> Historical evidence below refers to the private development archive.
-> Old commit hashes, PR numbers and scan counts do not describe this
-> fresh repository. Fresh-history CI, scanning and rebuilt-artifact
-> acceptance remain required before release.
-
 
 A local CLI for signing file-integrity records and verifying them later.
 
@@ -133,15 +128,14 @@ Tests include temporary generated keys and an explicitly public,
 deterministic TEST-ONLY key in `tests/fixtures/reference/`.
 Never use that reference key for real signing.
 
-85 tests and Ruff passed locally during release preparation.
-The acceptance source archive also passed all 85 tests without skips.
-Clean wheel and source installation checks passed.
-Merged acceptance checkpoint 557f0d2 passed macOS Python 3.11/3.13 CI.
-Documentation-closeout checkpoint 75ef73e passed all 85 tests and Ruff
-locally. Merged checkpoint f98c729 passed macOS Python 3.11/3.13 CI.
-Technical-release preparation checkpoint 79167c9 passed all 85 tests,
-Ruff and pip check. Final technical-closeout CI, final artifact validation
-and reproduction from the public release remain pending.
+Sanitized checkpoint 63e0bd4 passed macOS Python 3.11/3.13 CI.
+The wheel and ownership-normalized source passed fresh-install acceptance.
+The source passed 85 tests without skips and Ruff. Wheel verification gave
+0 / 1 / 0 for original, one-byte changed copy and unchanged original.
+See [candidate validation](docs/RELEASE-CANDIDATE-v0.1.md) for exact scope.
+This documentation revision needs its own CI, history scan and rebuilt
+artifact acceptance. Public release/reproduction remain pending.
+Article and social publication are explicitly deferred.
 No independent security audit is established.
 Linux and Windows support is not established.
 

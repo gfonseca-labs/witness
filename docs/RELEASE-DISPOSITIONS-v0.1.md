@@ -1,135 +1,38 @@
 # v0.1 release dispositions
 
-> Historical evidence below refers to the private development archive.
-> Old commit hashes, PR numbers and scan counts do not describe this
-> fresh repository. Fresh-history CI, scanning and rebuilt-artifact
-> acceptance remain required before release.
+## Accepted route
 
+D-030 accepts a technical GitHub-only v0.1 release with the disclosed limitations. Article and social publication are deferred and incomplete. Fresh issues #1, #2 and #3 preserve deferred technical work. D-032 permits personal-name attribution and account identifiers while excluding personal machine identifiers and local paths. Final release approval remains pending.
 
-Prepared on 10 October 2026.
-Status: owner accepted the technical release scope and documented residual
-limitations on 10 October 2026. Final release sign-off remains pending.
-See RELEASE-APPROVAL-v0.1.md for the accepted decision.
+## Accepted limitations
 
-## Scope
+- Hard-link support required; power-loss durability not guaranteed.
+- Concurrent-change detection is not an atomic snapshot.
+- Parent-directory symlink protection incomplete; no general input resource quota.
+- Linux/Windows support, independent audit, separate-user trial and demand not established.
 
-Public name: Witness by Blackwood.
-Package and command: blackwood-witness.
-Distribution plan: GitHub release; no PyPI publication in this release.
+Acceptance does not eliminate risks.
 
-Supported/tested platform: macOS, with Python 3.11 and 3.13 in CI.
-Linux and Windows support is not established.
+## Follow-ups
 
-The content-only version 1 record and its signing bytes remain unchanged.
+- [#1 — durability/portability](https://github.com/gfonseca-labs/witness/issues/1)
+- [#2 — path/input hardening and limits](https://github.com/gfonseca-labs/witness/issues/2)
+- [#3 — Linux/Windows validation](https://github.com/gfonseca-labs/witness/issues/3)
 
-## Reliability limitations to disclose
+Issue creation does not complete the deferred work.
 
-- Complete outputs are published without replacing existing paths.
-  This does not guarantee survival after power loss.
-- Forced termination can leave a temporary file.
-- Output publication requires filesystem hard-link support.
-- Metadata checks detect ordinary file changes during hashing.
-  They do not provide a snapshot or defend against filesystem control.
-- Content-input checks reject final-component symlinks and special files.
-  Parent-directory symlinks are not explicitly rejected.
-- Content hashing protections do not constitute equivalent restrictions
-  on every key or record input path. Use trusted regular key/record files.
-- Permission errors, invalid UTF-8 and parser recursion errors have
-  acceptance coverage. Error handling is not exhaustive.
-- Key and record reads have no explicit input-size/resource quota.
+## Observed candidate
 
-These limits remain visible in documentation and are accepted for v0.1.
-Deferred technical work covers publication durability/portability,
-path/input hardening and resource limits, and Linux/Windows validation.
-Earlier issues remain in the private archive. Fresh follow-up issues:
+Latest sanitized checkpoint: 63e0bd422ef4ac11a44e053df9f369111216558c. Fresh PR #4 is merged. macOS Python 3.11.9 and 3.13.15 CI passed 85 tests and Ruff. Run: https://github.com/gfonseca-labs/witness/actions/runs/38085266592
 
-- https://github.com/gfonseca-labs/witness/issues/1
-- https://github.com/gfonseca-labs/witness/issues/2
-- https://github.com/gfonseca-labs/witness/issues/3
+The 63e0bd4 wheel and ownership-normalized source archive matched committed files. Separate fresh installations passed pip check and help. The installed wheel returned original / one-byte changed copy / original results 0 / 1 / 0. The normalized source passed all 85 tests without skips, Ruff and reference verification. Observed runtime: cryptography 50.0.2, cffi 2.1.1 and pycparser 3.11; local Python 3.13.16, pytest 9.1.1 and Ruff 0.17.0. These observations are not a lock.
 
-Acceptance does not eliminate these limitations.
+## Outstanding gates
 
-## Review and usability evidence
-
-Automated tests, dependency advisory checks, history secret scanning
-and development review were performed.
-
-No independent security audit or separate-user usability trial has
-been completed. No user-demand or production-grade claim is established.
-
-Installation requires Python and Terminal knowledge. This release will
-disclose the absence of external usability validation.
-
-The reference fixture's deterministic key is intentionally public and
-TEST ONLY. It is unsuitable for real signing.
-
-## Reproduction limits
-
-Validation records identify observed dependency versions and artifacts.
-Dependency lower bounds are not an exact installation lock.
-Public reproduction must record the versions actually resolved.
-
-## Completed closeout checks — 10 October 2026
-
-- Acceptance-completion changes merged through PR #2.
-- Merged checkpoint 557f0d2 passed macOS Python 3.11/3.13 CI.
-- Verbatim README installation and workflow passed; recorded in 917d17b.
-- Full 64 MiB and 512 MiB signing, saved-record reload, verification,
-  one-byte-change rejection and restoration checks passed;
-  recorded in 2f3ad17.
-- Earlier acceptance evidence includes 85 passing tests, permission
-  failures, malformed-record handling, bounded-memory hashing and
-  preservation of demonstration files across named-package reinstall.
-
-Documentation-closeout merged through PR #3. Merged checkpoint f98c729
-passed macOS Python 3.11/3.13 CI. Technical-release preparation at
-79167c9 passed 85 tests, Ruff and pip check; Gitleaks scanned 35 commits
-with no recognized leaks, exit 0.
-
-These results apply to their recorded checkpoints. Final technical-closeout
-changes and final release artifacts require their own validation.
-
-## Demonstration decision — 10 October 2026
-
-The owner selected an ordered screenshot walkthrough instead of video.
-This supersedes the video medium requirement in the planning documents;
-the required demonstration behavior remains unchanged.
-
-The walkthrough must show:
-
-- Public command help and the four available commands.
-- Key generation and public-key export with matching fingerprints.
-- Signing and successful original-file verification.
-- Creation of a separate exact one-byte changed copy after the original
-  verification, followed by failed verification with exit code 1.
-- Successful original-file recheck with exit code 0.
-- Clear explanation of the trusted-public-key requirement and limits
-  of what the signature proves.
-
-Screenshots must use disposable demonstration keys and must not display
-private-key contents or passwords. All five screenshots were captured and
-reviewed; the sequence showed verification results 0/1/0.
-See DEMO-v0.1.md for behavior and trust limitations.
-The updated internal Word package includes the screenshots and explicitly
-records the video-medium supersession. It requires a final release update.
-
-## Accepted technical release route
-
-D-030 supersedes article and social publication as prerequisites for the
-technical GitHub v0.1.0 release. Those activities remain deferred and
-incomplete. No new features will be added before release.
-
-## Outstanding technical release gates
-
-- Final claim/document consistency and final internal release records.
-- Passing CI for the final technical-closeout changes.
-- Final sanitized-release history scan.
-- Final wheel/source inspection, checksums and clean-install acceptance.
-- Public visibility and private vulnerability-reporting verification.
-- Reviewed tag and GitHub Release with verified assets.
-- Reproduction from the actual public release and public-link checks.
-- Final owner release sign-off.
-- Project index update and technical SHIPPED status after these gates pass.
-
-Article and social publication retain separate deferred status after the
-technical release; SHIPPED must not imply those activities were completed.
+1. Review/merge these documents with passing CI; record the new commit.
+2. Repeat history/privacy checks; rebuild, normalize and inspect distributions.
+3. Record new hashes/resolved versions; repeat clean-install acceptance.
+4. Verify public visibility and private vulnerability reporting.
+5. Review tag/release/assets; verify downloaded checksums.
+6. Reproduce from the actual public release and check links.
+7. Obtain final owner sign-off and update technical SHIPPED status.
