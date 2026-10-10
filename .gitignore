@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Virtual environment
+.venv/
+
+# Testing / tooling
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Witness private key material
+*.key
+private.pem
+private*.pem

@@ -1,0 +1,8 @@
+{
+  "payload": {
+    "file_sha256": "a38a1b2130fd6b757c19107d41f4bbefb14486f28dc59c0501328ed32db0d6be",
+    "signer": "sha256:a050837d85070582ccf7394b0988847cc312cb88259b894899f6f239cf1791a5",
+    "version": 1
+  },
+  "signature": "d27af50a81ec07d02b4c5708feeeb5a0529bf2b3a8fdb2f50d0b56ac29be9a718045e645ffe9f3a5a2b69b91813090b1368de76655b3245b5df8b0d61b2aab09"
+}
