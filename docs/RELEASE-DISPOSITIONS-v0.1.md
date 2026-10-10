@@ -41,8 +41,12 @@ The content-only version 1 record and its signing bytes remain unchanged.
 These limits remain visible in documentation and are accepted for v0.1.
 Deferred technical work covers publication durability/portability,
 path/input hardening and resource limits, and Linux/Windows validation.
-Earlier issues remain in the private archive. Recreate them in this
-fresh repository and record their actual links before release.
+Earlier issues remain in the private archive. Fresh follow-up issues:
+
+- https://github.com/gfonseca-labs/witness/issues/1
+- https://github.com/gfonseca-labs/witness/issues/2
+- https://github.com/gfonseca-labs/witness/issues/3
+
 Acceptance does not eliminate these limitations.
 
 ## Review and usability evidence
@@ -119,7 +123,6 @@ incomplete. No new features will be added before release.
 
 - Final claim/document consistency and final internal release records.
 - Passing CI for the final technical-closeout changes.
-- Recreate and link deferred technical issues in the fresh repository.
 - Final sanitized-release history scan.
 - Final wheel/source inspection, checksums and clean-install acceptance.
 - Public visibility and private vulnerability-reporting verification.
