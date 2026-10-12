@@ -3,8 +3,11 @@
 
 A local CLI for signing file-integrity records and verifying them later.
 
-**Release status:** v0.1.0 release candidate; not yet publicly released.
-The tested platform is macOS. CI targets Python 3.11 and 3.13.
+**Release status:** SHIPPED - v0.1.0, released on 10 October 2026. Maintenance only; no active feature development.
+
+**Release:** https://github.com/gfonseca-labs/witness/releases/tag/v0.1.0
+
+The tested platform is macOS. CI passed on Python 3.11 and 3.13. Linux and Windows support is not established.
 
 ## Working example
 
