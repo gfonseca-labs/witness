@@ -75,7 +75,7 @@ python -m ruff check .
 ```
 
 In later Terminal sessions, activate the environment again.
-A GitHub release installation link will be added when the release exists.
+The published v0.1.0 release, including its distribution artifacts and checksums, is available at https://github.com/gfonseca-labs/witness/releases/tag/v0.1.0. See the release instructions for the published artifacts. PyPI distribution is outside the v0.1.0 release scope.
 
 ## Keys and paths
 
