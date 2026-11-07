@@ -2,16 +2,13 @@
 
 ## Release status
 
-Witness v0.1.0 is being prepared for release. No public release is
-established yet. Private vulnerability reporting must be enabled and
-verified before the public release is announced.
-
-After release, security fixes will target the latest published version.
+[Witness v0.1.0](https://github.com/gfonseca-labs/witness/releases/tag/v0.1.0)
+was published on 10 October 2026. Security fixes target the latest published version.
 There is no guaranteed response time or long-term support commitment.
 
 ## Reporting a vulnerability
 
-When enabled, use GitHub's private reporting feature:
+Use GitHub's private reporting feature when it is available:
 
 https://github.com/gfonseca-labs/witness/security/advisories
 
@@ -38,5 +35,6 @@ It does not prove named identity, original authorship, truthfulness,
 creation time, malware safety or uncompromised keys. It provides no
 revocation or trusted timestamp service.
 
-See docs/THREAT_MODEL.md for assumptions and filesystem limitations.
+See the [threat model](docs/THREAT_MODEL.md) for assumptions and filesystem limitations.
 Automated tests are not an independent security audit.
+

@@ -43,7 +43,10 @@ metadata detects ordinary changes or replacement during the read.
 
 This is not an atomic filesystem snapshot or a guarantee against an
 attacker controlling the filesystem. Parent-directory symlinks are not
-explicitly rejected. Changes after hashing are outside the observed check.
+explicitly rejected. These regular-file checks apply to content hashing;
+key and record inputs use ordinary path reads. Changes after hashing are
+outside the observed check. Reads of keys and records have no general size
+quota, and file hashing has no general time or total-byte quota.
 
 Outputs are written to temporary files beside the destination, flushed,
 then published using a hard link that cannot replace an existing path.
@@ -68,3 +71,4 @@ Linux and Windows support is not established.
 Automated tests and development review are not an independent security
 audit. No independent audit is established by the development evidence.
 No production-grade security assurance is claimed.
+

@@ -1,9 +1,8 @@
 # Large-file hashing validation
 
-> Historical evidence below refers to the private development archive.
-> Old commit hashes, PR numbers and scan counts do not describe this
-> fresh repository. Fresh-history CI, scanning and rebuilt-artifact
-> acceptance remain required before release.
+> Historical development measurements, not a benchmark of the published
+> release. The implementation checkpoints below are not public reproduction
+> prerequisites. See [release validation](VALIDATION-v0.1.md).
 
 
 Observed on 10 October 2026.
@@ -51,3 +50,4 @@ This complements the earlier bounded-memory hashing measurements.
 It exercises the Python record API, rather than the installed CLI.
 The files may be sparse; this is not a physical-disk or throughput
 benchmark, nor a guarantee for every file size or concurrent writer.
+
