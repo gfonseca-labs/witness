@@ -27,6 +27,6 @@ source tar metadata/content passed the checked identifier audit.
 ## Evidence boundaries
 
 Earlier README, large-file/memory, reinstall-preservation and advisory checks
-were earlier development observations, not checks rerun at this candidate. They were not all rerun here.
+were earlier development observations, not checks rerun at this candidate.
 Current artifact comparison established matching committed implementation.
 No exhaustive privacy guarantee or independent audit is claimed.
