@@ -1,20 +1,45 @@
 # Witness by Blackwood
 
+Has this file changed since its contents were signed?
 
-A local CLI for signing file-integrity records and verifying them later.
+Witness is a local command-line tool that hashes a file with SHA-256 and signs
+a detached integrity record with Ed25519. Later, it checks the record against
+a public key and compares the file's current bytes with the signed digest.
 
-**Release status:** SHIPPED - v0.1.0, released on 10 October 2026. Maintenance only; no active feature development.
+With an independently trusted public key, the unchanged file verifies. Changing
+even one byte makes verification fail. Renaming unchanged contents still verifies:
+the record signs content, not a filename.
 
-**Release:** https://github.com/gfonseca-labs/witness/releases/tag/v0.1.0
+Witness does not establish the signer's identity, authorship, creation time,
+truthfulness or the safety of a file. You must authenticate the public key
+through a trusted channel.
 
-The tested platform is macOS. CI passed on Python 3.11 and 3.13. Linux and Windows support is not established.
+## Install
 
-## Working example
+Python 3.11 or newer on macOS. The tested CI versions are 3.11 and 3.13;
+Linux and Windows support has not been established.
 
-From an installed Witness environment, create disposable demonstration
-files outside the repository:
+```sh
+git clone https://github.com/gfonseca-labs/witness.git
+cd witness
+git checkout v0.1.0
+python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install .
+blackwood-witness --help
+```
 
-```bash
+The [v0.1.0 release](https://github.com/gfonseca-labs/witness/releases/tag/v0.1.0)
+also provides a wheel, source distribution and checksums. See
+[release installation and validation](docs/VALIDATION-v0.1.md).
+Runtime dependencies are resolved during installation, not locked.
+The unrelated PyPI package named `witness` is not this tool.
+
+## Try it
+
+From the activated environment, create disposable files outside the checkout:
+
+```sh
 WITNESS_DEMO_DIR="$(mktemp -d)"
 printf 'hello witness\n' > "$WITNESS_DEMO_DIR/example.txt"
 
@@ -24,151 +49,85 @@ blackwood-witness sign "$WITNESS_DEMO_DIR/example.txt" --private-key "$WITNESS_D
 blackwood-witness verify "$WITNESS_DEMO_DIR/example.txt" --public-key "$WITNESS_DEMO_DIR/public.pem" --record "$WITNESS_DEMO_DIR/record.json"
 ```
 
-Choose a disposable password and enter it at the prompts. Terminal does
-not display password characters. Verification does not ask for a password.
+Choose a disposable password. Key generation asks twice; public-key export and
+signing ask once each. Password characters are not displayed. Verification
+needs no password and should print `Verified:` with the file path.
 
-Demonstrate an exact one-byte change in a separate copy:
+Change exactly one byte in a separate copy, then recheck the original:
 
-```bash
+```sh
 printf 'Hello witness\n' > "$WITNESS_DEMO_DIR/changed.txt"
 blackwood-witness verify "$WITNESS_DEMO_DIR/changed.txt" --public-key "$WITNESS_DEMO_DIR/public.pem" --record "$WITNESS_DEMO_DIR/record.json"
 echo "Verification exit code: $?"
 blackwood-witness verify "$WITNESS_DEMO_DIR/example.txt" --public-key "$WITNESS_DEMO_DIR/public.pem" --record "$WITNESS_DEMO_DIR/record.json"
 ```
 
-The changed copy should fail with exit code 1. The unchanged original
-should still succeed. Keep the original record unchanged.
+Run these commands in an interactive shell: the changed copy intentionally
+returns exit code 1. A script with `set -e` would stop there. The original
+should verify again with exit code 0. Keep its record unchanged.
 
-## What verification proves
+This local demonstration creates its own key. It demonstrates the mechanics;
+it does not establish trust in a key received from someone else.
 
-Successful verification means the record signature verifies against the
-supplied public key and the supplied file's bytes match its signed
-SHA-256 digest.
+## Commands
 
-Authenticate the public key or its fingerprint through a trusted channel.
-A key supplied with an untrusted file does not establish signer identity.
+| Command | Result |
+| --- | --- |
+| `keygen --private-key PATH` | New password-encrypted Ed25519 private key |
+| `export-public-key --private-key PATH --public-key PATH` | Public key and fingerprint |
+| `sign FILE --private-key PATH --record PATH` | Detached signed JSON record |
+| `verify FILE --public-key PATH --record PATH` | Signature and file-content verification |
 
-Witness does not prove truthfulness, original authorship, named identity,
-creation time, malware safety or uncompromised keys. It signs content,
-not the filename, location, permissions or modification time.
+Use `blackwood-witness COMMAND --help` for arguments.
 
-## Installation
+Exit codes: **0** for success or help, **1** for failed verification, handled
+operational errors or cancellation, and **2** for invalid command-line arguments.
 
-Use Python 3.11 or newer on macOS. From a Witness source checkout:
+## Keys, files and limitations
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install .
-blackwood-witness --help
-```
+- Authenticate the public key or its fingerprint independently. An attacker
+  supplying both a record and a key can produce a valid check under their own key.
+- Keep real private keys and passwords outside Git and back them up securely.
+  Witness has no password recovery, key revocation or trusted timestamp service.
+- CLI-created private keys are encrypted PKCS#8 PEM with permissions `0600`.
+  Public keys are SubjectPublicKeyInfo PEM. Fingerprints are SHA-256 of
+  SubjectPublicKeyInfo DER, prefixed `sha256:`.
+- Paths are explicit. No storage or configuration directory is selected automatically.
+- Content inputs must be regular files. Final-component symlinks, directories
+  and special files are rejected. Key and record inputs use ordinary path reads;
+  parent-directory symlinks are not explicitly rejected.
+- Keep files unchanged during the operation. Metadata checks detect ordinary
+  concurrent changes; they do not provide an atomic snapshot or protection
+  against an attacker controlling the filesystem.
+- Output commands refuse to overwrite. Publication requires hard links;
+  forced termination can leave temporary files, and power-loss persistence is
+  not guaranteed. Use trusted directories. Input reads have no general resource quota.
 
-This installs the checkout as a regular package. Clean wheel and source-distribution installations passed on macOS
-during preparation. See [validation evidence](docs/VALIDATION-v0.1.md).
+The [threat model](docs/THREAT_MODEL.md) describes the trust boundary and
+remaining limitations. No independent security audit is claimed.
 
-For development, use:
+## Development
 
-```bash
-python -m pip install -e ".[dev]"
+From a checkout of the branch you want to test, with its environment activated:
+
+```sh
+python -m pip install -e '.[dev]'
 python -m pytest
 python -m ruff check .
 ```
 
-In later Terminal sessions, activate the environment again.
-The published v0.1.0 release, including its distribution artifacts and checksums, is available at https://github.com/gfonseca-labs/witness/releases/tag/v0.1.0. See the release instructions for the published artifacts. PyPI distribution is outside the v0.1.0 release scope.
+Tests cover parsing, file handling, CLI success and failure paths, and a fixed
+version 1 compatibility fixture. Its deterministic key is public and TEST ONLY.
 
-## Keys and paths
+## Documentation
 
-All key and record paths are explicit. Witness does not automatically
-create or select a configuration directory. `~/.witness` is a manual
-storage convention.
-
-CLI-generated private keys are password-encrypted PKCS#8 PEM with
-owner-only permissions. Public keys use SubjectPublicKeyInfo PEM.
-Fingerprints are SHA-256 of SubjectPublicKeyInfo DER, prefixed `sha256:`.
-
-Keep real keys and passwords outside Git. Back them up securely.
-Witness cannot recover a lost password and has no key revocation service.
-
-## File handling
-
-Content inputs must be regular files. Symlinks in the final input-path
-component, directories and special files are rejected. Parent-directory
-symlinks are not explicitly rejected.
-
-Files should remain unchanged during signing and verification.
-Metadata checks detect ordinary concurrent changes or replacement;
-they do not provide an atomic snapshot or protect against an attacker
-controlling the filesystem.
-
-Output commands refuse to overwrite existing paths. Complete temporary
-files are published using hard links. Handled failures clean up the
-temporary file; forced termination can leave it behind. This requires
-hard-link support and does not guarantee persistence after power loss.
-Use trusted directories.
-
-## Record format
-
-Version 1 has exactly two top-level fields: `payload` and `signature`.
-The payload contains only integer `version: 1`, `file_sha256` and `signer`.
-The Ed25519 signature uses 128 lowercase hexadecimal characters.
-
-The signature covers a fixed domain prefix and canonical ASCII payload
-JSON. No filename, size or timestamp is signed. Renaming unchanged
-contents does not invalidate a record.
-
-See [FORMAT.md](docs/FORMAT.md) for the exact signing bytes and parsing rules.
-
-## Exit codes
-
-- 0: success, including successful verification and help.
-- 1: failed verification, handled operational errors or cancellation.
-- 2: invalid or missing command-line arguments.
-
-## Tests and review
-
-Tests include temporary generated keys and an explicitly public,
-deterministic TEST-ONLY key in `tests/fixtures/reference/`.
-Never use that reference key for real signing.
-
-Sanitized checkpoint 63e0bd4 passed macOS Python 3.11/3.13 CI.
-The wheel and ownership-normalized source passed fresh-install acceptance.
-The source passed 85 tests without skips and Ruff. Wheel verification gave
-0 / 1 / 0 for original, one-byte changed copy and unchanged original.
-See [candidate validation](docs/RELEASE-CANDIDATE-v0.1.md) for exact scope.
-This documentation revision needs its own CI, history scan and rebuilt
-artifact acceptance. Public release/reproduction remain pending.
-Article and social publication are explicitly deferred.
-No independent security audit is established.
-Linux and Windows support is not established.
-
-## Documentation and reporting
-
-- [Record format](docs/FORMAT.md)
-- [Threat model and limitations](docs/THREAT_MODEL.md)
-- [Design](docs/DESIGN.md)
-- [Screenshot demonstration and verification limits](docs/DEMO-v0.1.md)
-- [Security reporting policy](SECURITY.md)
-- [Owner-approved technical release scope](docs/RELEASE-APPROVAL-v0.1.md)
+- [Design and module boundaries](docs/DESIGN.md)
+- [Version 1 record format](docs/FORMAT.md)
+- [Threat model](docs/THREAT_MODEL.md)
+- [Reproducible demonstration](docs/DEMO-v0.1.md)
+- [Release installation and validation](docs/VALIDATION-v0.1.md)
+- [Security reporting](SECURITY.md)
 - [Changelog](CHANGELOG.md)
-- [MIT license](LICENSE)
 
-Private vulnerability reporting must be enabled and verified before
-the public release is announced.
-
-## Command help
-
-```bash
-blackwood-witness --help
-blackwood-witness keygen --help
-blackwood-witness export-public-key --help
-blackwood-witness sign --help
-blackwood-witness verify --help
-```
-
-## Project identity
-
-Public name: Witness by Blackwood. Package and CLI command: `blackwood-witness`.
-The internal Python module remains `witness`; the version 1 record format is unchanged.
-
-This project is unrelated to in-toto Witness. Do not install the unrelated PyPI package named `witness` to obtain this tool.
+Code: [MIT](LICENSE). Distribution and CLI: `blackwood-witness`; Python module:
+`witness`. This project is unrelated to [in-toto Witness](https://github.com/in-toto/witness).

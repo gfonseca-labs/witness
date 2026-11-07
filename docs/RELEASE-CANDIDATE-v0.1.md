@@ -1,8 +1,11 @@
-# Sanitized v0.1 candidate validation — 10 October 2026
+# Historical candidate validation — 10 October 2026
+
+This records an earlier candidate, not the published release. Use
+[release validation](VALIDATION-v0.1.md) for the release commit and asset hashes.
 
 Checkpoint: 63e0bd422ef4ac11a44e053df9f369111216558c
 
-Latest sanitized checkpoint: 63e0bd422ef4ac11a44e053df9f369111216558c. Fresh PR #4 is merged. macOS Python 3.11.9 and 3.13.15 CI passed 85 tests and Ruff. Run: https://github.com/gfonseca-labs/witness/actions/runs/38085266592
+Candidate checkpoint: 63e0bd422ef4ac11a44e053df9f369111216558c. Fresh PR #4 is merged. macOS Python 3.11.9 and 3.13.15 CI passed 85 tests and Ruff. Run: https://github.com/gfonseca-labs/witness/actions/runs/38085266592
 
 At 63e0bd4, Gitleaks 8.30.1 reported no leaks across 4 scanned commits, approximately 105.98 KB, exit 0. A separate audit checked all 6 reachable commits and 50 unique file versions, including commit metadata; no checked machine identifiers were found. Supplied final CI job logs showed hosted-runner paths and no checked personal machine identifiers. These are bounded reviews, not exhaustive guarantees or independent audits.
 
@@ -24,18 +27,6 @@ source tar metadata/content passed the checked identifier audit.
 ## Evidence boundaries
 
 Earlier README, large-file/memory, reinstall-preservation and advisory checks
-belong to private development checkpoints. They were not all rerun here.
+were earlier development observations, not checks rerun at this candidate.
 Current artifact comparison established matching committed implementation.
 No exhaustive privacy guarantee or independent audit is claimed.
-
-## Remaining gates
-
-1. Review/merge these documents with passing CI; record the new commit.
-2. Repeat history/privacy checks; rebuild, normalize and inspect distributions.
-3. Record new hashes/resolved versions; repeat clean-install acceptance.
-4. Verify public visibility and private vulnerability reporting.
-5. Review tag/release/assets; verify downloaded checksums.
-6. Reproduce from the actual public release and check links.
-7. Obtain final owner sign-off and update technical SHIPPED status.
-
-These documentation updates create a new release-preparation candidate: record its commit, pass CI and history/privacy checks, rebuild and normalize distributions, record new hashes and repeat clean-install acceptance. Then verify visibility/private reporting, tag/release/assets and public-install reproduction; obtain final owner sign-off. Technical SHIPPED is not established.

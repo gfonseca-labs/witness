@@ -1,24 +1,14 @@
-# Public naming decision
+# Project names
 
-Approved by Blackwood on 10 October 2026.
+| Surface | Name |
+| --- | --- |
+| Public project | Witness by Blackwood |
+| Distribution and CLI | `blackwood-witness` |
+| Repository | `gfonseca-labs/witness` |
+| Python module | `witness` |
+| Signed record domain prefix | `witness-record-v1` followed by LF |
 
-- Public name: Witness by Blackwood.
-- Distribution and CLI command: blackwood-witness.
-- Repository: gfonseca-labs/witness.
-- Internal Python module: witness.
-- Version 1 record format and signing prefix: unchanged.
-
-This supersedes the original unqualified public package and command name.
-Historical validation records retain the names tested at those checkpoints.
-
-An established security project uses the name Witness:
-https://github.com/in-toto/witness
-
-The PyPI name witness is occupied by an unrelated project:
-https://pypi.org/project/witness/
-
-Public searches found no relevant indexed conflict for blackwood-witness.
-PyPI availability was not conclusively verified or reserved.
-Package-index publication is outside the current GitHub-only release plan.
-
-This project is unrelated to in-toto Witness.
+This project is unrelated to [in-toto Witness](https://github.com/in-toto/witness)
+and the [PyPI package named witness](https://pypi.org/project/witness/).
+Install from this repository or its release assets. The v0.1.0 release does
+not provide a PyPI installation path. No package-name reservation is claimed.

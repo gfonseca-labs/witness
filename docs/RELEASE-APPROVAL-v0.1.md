@@ -1,35 +1,27 @@
-# Witness by Blackwood — owner release decision
+# Witness v0.1.0 release scope
 
-Owner: Blackwood
-Decision date: 10 October 2026
+The [technical release](https://github.com/gfonseca-labs/witness/releases/tag/v0.1.0)
+was published on 10 October 2026. Its source commit, checksums and reported
+validation are collected in [release validation](VALIDATION-v0.1.md).
 
-## D-030 — Accepted route and limitations
+This page replaces obsolete preparation instructions. Publication is observable;
+this page does not certify a separate owner approval or post-publication
+reproduction. Article and social publication were deferred from the technical
+release and are not required to run the tool.
 
-D-030 accepts a technical GitHub-only v0.1 release with the disclosed limitations. Article and social publication are deferred and incomplete. Fresh issues #1, #2 and #3 preserve deferred technical work. D-032 permits personal-name attribution and account identifiers while excluding personal machine identifiers and local paths. Final release approval remains pending.
+## Accepted technical scope
 
-- Hard-link support required; power-loss durability not guaranteed.
-- Concurrent-change detection is not an atomic snapshot.
-- Parent-directory symlink protection incomplete; no general input resource quota.
-- Linux/Windows support, independent audit, separate-user trial and demand not established.
+Four local commands: key generation, public-key export, signing and verification.
+Version 1 signs content digests, not identity, filenames or timestamps.
 
-No new features before release.
+## Remaining limitations
 
-## D-031/D-032 — Accepted privacy scope
+- [Durability and portability](https://github.com/gfonseca-labs/witness/issues/1):
+  hard links required; power-loss persistence is not guaranteed.
+- [Path handling and input limits](https://github.com/gfonseca-labs/witness/issues/2):
+  no atomic snapshot, incomplete parent-symlink protection and no general input quota.
+- [Additional platforms](https://github.com/gfonseca-labs/witness/issues/3):
+  Linux and Windows support is not established.
 
-Original machine-identified development history remains private. Fresh sanitized
-history is used. Personal-name attribution and GitHub account identifiers are
-accepted. Machine identifiers, local usernames, hostnames and personal local
-paths must be excluded from published files and commit metadata. D-032
-supersedes the earlier personal-name prohibition.
-
-## Follow-ups
-
-- [#1 — durability/portability](https://github.com/gfonseca-labs/witness/issues/1)
-- [#2 — path/input hardening and limits](https://github.com/gfonseca-labs/witness/issues/2)
-- [#3 — Linux/Windows validation](https://github.com/gfonseca-labs/witness/issues/3)
-
-## Final approval — Pending
-
-Scope approval is not release completion. Record final commit, CI URL, tag,
-asset hashes, release URL, public reproduction and owner sign-off before
-technical SHIPPED. Article/social remain deferred and incomplete.
+Issue links identify follow-up topics; they do not imply those limitations
+have been resolved. No independent security audit is claimed.

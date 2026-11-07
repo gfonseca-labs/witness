@@ -1,8 +1,7 @@
 # Witness record format — version 1
 
-This specification describes the implemented version 1 format.
-It supersedes the original planned format with filenames, sizes,
-timestamps and Base64url signatures. Those fields are not implemented.
+This specification describes the implemented version 1 format. It signs
+content digests and key fingerprints using hexadecimal Ed25519 signatures.
 
 ## Record structure
 

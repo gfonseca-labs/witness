@@ -9,4 +9,5 @@ Accepted author names and account identifiers are permitted. Archive metadata
 was checked separately, including tar ownership. Ignored/untracked files,
 unreachable objects and unrecognized secrets/identifiers are outside these
 bounded reviews. Original development history and prior scans remain private.
-Subsequent commits and rebuilt assets require new reviews before publication.
+This historical scan does not cover subsequent commits or rebuilt assets.
+See [release validation](VALIDATION-v0.1.md) for the published release evidence.

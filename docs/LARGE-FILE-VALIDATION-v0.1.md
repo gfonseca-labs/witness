@@ -1,9 +1,8 @@
 # Large-file hashing validation
 
-> Historical evidence below refers to the private development archive.
-> Old commit hashes, PR numbers and scan counts do not describe this
-> fresh repository. Fresh-history CI, scanning and rebuilt-artifact
-> acceptance remain required before release.
+> Historical development measurements, not a benchmark of the published
+> release. The implementation checkpoints below are not public reproduction
+> prerequisites. See [release validation](VALIDATION-v0.1.md).
 
 
 Observed on 10 October 2026.

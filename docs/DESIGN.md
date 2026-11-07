@@ -47,9 +47,8 @@ Version 1 signs only `version`, `file_sha256` and `signer`.
 Signatures use lowercase hex. There is no `seal` command, filename
 warning or signed timestamp.
 
-These decisions supersede the original planning contract. The internal
-project archive preserves that historical contract and its reconciliation.
-The source briefs did not establish every reason for the differences.
+The [version 1 specification](FORMAT.md) and compatibility fixture define
+the public format. Filenames, sizes and timestamps are outside that format.
 
 ## CLI outcomes
 
