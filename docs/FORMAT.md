@@ -71,4 +71,3 @@ documented and TEST ONLY. It must never be used for real signing.
 
 Preserve this fixture unchanged. An incompatible format change requires
 a new version and separate fixtures.
-

@@ -71,4 +71,3 @@ Linux and Windows support is not established.
 Automated tests and development review are not an independent security
 audit. No independent audit is established by the development evidence.
 No production-grade security assurance is claimed.
-

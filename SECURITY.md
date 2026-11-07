@@ -37,4 +37,3 @@ revocation or trusted timestamp service.
 
 See the [threat model](docs/THREAT_MODEL.md) for assumptions and filesystem limitations.
 Automated tests are not an independent security audit.
-

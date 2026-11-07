@@ -11,4 +11,3 @@ unreachable objects and unrecognized secrets/identifiers are outside these
 bounded reviews. Original development history and prior scans remain private.
 This historical scan does not cover subsequent commits or rebuilt assets.
 See [release validation](VALIDATION-v0.1.md) for the published release evidence.
-
