@@ -1,4 +1,4 @@
-# Witness by Blackwood
+# Witness
 
 Has this file changed since its contents were signed?
 
