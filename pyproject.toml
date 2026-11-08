@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "blackwood-witness"
-version = "0.1.0"
+version = "0.1.1"
 description = "A small cryptographic file-integrity utility."
 readme = "README.md"
 license = "MIT"
@@ -22,6 +22,7 @@ blackwood-witness = "witness.cli:main"
 dev = [
     "pytest>=8",
     "ruff>=0.7",
+    "build>=1.2",
 ]
 
 [tool.setuptools.packages.find]

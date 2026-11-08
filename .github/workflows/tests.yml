@@ -43,3 +43,11 @@ jobs:
 
       - name: Check the installed command
         run: blackwood-witness --help
+
+      - name: Check publication content
+        run: python tools/check_publication.py
+
+      - name: Build and inspect release distributions
+        run: |
+          python tools/build_release.py release-check
+          python tools/check_publication.py release-check/*.whl release-check/*.tar.gz

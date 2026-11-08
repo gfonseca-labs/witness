@@ -24,3 +24,4 @@ htmlcov/
 *.key
 private.pem
 private*.pem
+release-check/

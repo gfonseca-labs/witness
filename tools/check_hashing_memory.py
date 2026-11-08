@@ -65,9 +65,9 @@ def main() -> None:
 
     small, large = results
     assert large["python_peak_bytes"] < 8 * MIB, "Unexpected Python allocation peak."
-    assert (
-        large["python_peak_bytes"] <= small["python_peak_bytes"] + 2 * MIB
-    ), "Python allocations grew unexpectedly with file size."
+    assert large["python_peak_bytes"] <= small["python_peak_bytes"] + 2 * MIB, (
+        "Python allocations grew unexpectedly with file size."
+    )
 
     print("PASS: measured Python allocation remained bounded across these file sizes.")
     print("Process peaks include interpreter overhead and are reported separately.")
