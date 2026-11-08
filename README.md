@@ -22,16 +22,16 @@ Linux and Windows support has not been established.
 ```sh
 git clone https://github.com/gfonseca-labs/witness.git
 cd witness
-git checkout v0.1.0
+git checkout v0.1.1
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install .
 blackwood-witness --help
 ```
 
-The [v0.1.0 release](https://github.com/gfonseca-labs/witness/releases/tag/v0.1.0)
+The [v0.1.1 release](https://github.com/gfonseca-labs/witness/releases/tag/v0.1.1)
 also provides a wheel, source distribution and checksums. See
-[release installation and validation](docs/VALIDATION-v0.1.md).
+[release installation and validation](docs/VALIDATION.md).
 Runtime dependencies are resolved during installation, not locked.
 The unrelated PyPI package named `witness` is not this tool.
 
@@ -125,7 +125,7 @@ version 1 compatibility fixture. Its deterministic key is public and TEST ONLY.
 - [Version 1 record format](docs/FORMAT.md)
 - [Threat model](docs/THREAT_MODEL.md)
 - [Reproducible demonstration](docs/DEMO-v0.1.md)
-- [Release installation and validation](docs/VALIDATION-v0.1.md)
+- [Release installation and validation](docs/VALIDATION.md)
 - [Security reporting](SECURITY.md)
 - [Changelog](CHANGELOG.md)
 

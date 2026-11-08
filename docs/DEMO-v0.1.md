@@ -1,7 +1,7 @@
 # Reproduce the Witness demonstration
 
 Install Witness using the [README](../README.md#install) or the
-[release artifact instructions](VALIDATION-v0.1.md), then run the
+[release artifact instructions](VALIDATION.md), then run the
 [README example](../README.md#try-it) in an interactive shell.
 
 | Step | Expected observation |
@@ -15,8 +15,8 @@ Install Witness using the [README](../README.md#install) or the
 
 The example uses disposable keys and keeps the original file and record
 unchanged. Passwords and private-key contents should not be displayed.
-The expected command behavior can be checked from the repository; no external
-screenshots or private documentation are required.
+The repository contains the commands and expected observations needed to
+repeat this demonstration.
 
 Matching fingerprints identify the same key; they do not independently
 authenticate it. Verification checks the signature and signed content digest.

@@ -1,9 +1,12 @@
 # Changelog
 
-## Unreleased
+## 0.1.1 — 2026-11-08
 
 - Reconcile public documentation with the published release, add a complete
   installation path and reproducible demo, and clarify historical validation.
+- Remove unavailable development checkpoints and preparation references.
+- Add publication-content checks and normalized source-archive builds to CI.
+- Keep the version 1 record format and runtime behavior unchanged.
 
 ## [0.1.0](https://github.com/gfonseca-labs/witness/releases/tag/v0.1.0) — 2026-10-10
 

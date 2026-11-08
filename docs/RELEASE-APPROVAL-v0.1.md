@@ -4,10 +4,8 @@ The [technical release](https://github.com/gfonseca-labs/witness/releases/tag/v0
 was published on 10 October 2026. Its source commit, checksums and reported
 validation are collected in [release validation](VALIDATION-v0.1.md).
 
-This page replaces obsolete preparation instructions. Publication is observable;
-this page does not certify a separate owner approval or post-publication
-reproduction. Article and social publication were deferred from the technical
-release and are not required to run the tool.
+These are the historical v0.1.0 scope and limitations. Use the
+[current installation guide](VALIDATION.md) for the latest source and artifacts.
 
 ## Accepted technical scope
 

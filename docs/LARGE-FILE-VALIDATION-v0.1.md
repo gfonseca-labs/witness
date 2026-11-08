@@ -1,14 +1,13 @@
 # Large-file hashing validation
 
 > Historical development measurements, not a benchmark of the published
-> release. The implementation checkpoints below are not public reproduction
-> prerequisites. See [release validation](VALIDATION-v0.1.md).
+> release. See [release validation](VALIDATION-v0.1.md) for the shipped
+> artifacts and their checksums.
 
 
 Observed on 10 October 2026.
 
-Environment: macOS 26.6.2, build 25G83; Python 3.13.16.
-Hashing implementation checkpoint: 1f5e358.
+Environment: macOS; Python 3.13.16.
 Procedure: tools/check_hashing_memory.py.
 
 Each file was hashed in a separate Python process. Files contained zeros
@@ -29,9 +28,9 @@ of physical disk performance.
 
 ## Full large-file record workflow — 10 October 2026
 
-On the documentation-closeout branch following checkpoint 917d17b,
-a manual acceptance check exercised 64 MiB and 512 MiB logical files
-containing zero bytes.
+A manual development check exercised 64 MiB and 512 MiB logical files
+containing zero bytes. These are historical observations, not a reproduction
+of the published release.
 
 For each size:
 
